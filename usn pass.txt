@@ -1,0 +1,2 @@
+admin; usnm:surya pass:surya123
+user; usnm:saas pass:saas123
