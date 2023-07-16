@@ -40,8 +40,8 @@
                         <button name="login" class="btn btn-light btn-user btn-block">
                             Login
                         </button>
-                        <p class="forget">Lupa Password? <a href="">Klik Disini</a></p>
-                        <p class="forget">Tidak mempunyai akun? <a href="">Buat Akun</a></p>
+                        <p class="forget">Lupa Password? <a href="cs">Klik Disini</a></p>
+                        <p class="forget">Tidak mempunyai akun? <a href="cs/daftar.php">Buat Akun</a></p>
                     </form>
                 </div>
             </div>
@@ -64,7 +64,7 @@
 			$akun = mysqli_query($conn, "select * from tb_user natural join tb_level");
 			echo mysqli_error($conn);
 			while($r = mysqli_fetch_array($akun)){
-				if($r['username'] == $username and $r['password'] == $password and $r['status'] == 'aktif'){
+				if($r['username'] == $username and $r['password'] == $password){
 					$_SESSION['username'] = $username;
 					$_SESSION['id_user'] = $r['id_user'];
 					$_SESSION['level'] = $r['id_level'];

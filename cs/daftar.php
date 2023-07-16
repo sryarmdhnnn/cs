@@ -93,9 +93,6 @@
               <div class="controls">
                 <select class="span11" name="id_level">
                   <!--<option value="1">Administrator</option>-->
-                  <option value="2">Waiter</option>
-                  <option value="3">Kasir</option>
-                  <option value="4">Owner</option>
                   <option value="5">Pelanggan</option>
                 </select>
               </div>
@@ -110,14 +107,13 @@
               $username = $_POST['username'];
               $password = $_POST['password'];
               $id_level = $_POST['id_level'];
-              $status = 'nonaktif';
               //echo "<br>";
               //echo $nama_user . " || " . $username . " || " . $password . " || " . $id_level . " || " . $status;
               //echo "<br></br>";
-              $query_daftar = "insert into tb_user values ('','$username','$password','$nama_user','$id_level','$status')";
+              $query_daftar = "insert into tb_user values ('','$username','$password','$nama_user','$id_level')";
               $sql_daftar = mysqli_query($conn, $query_daftar);
               if($sql_daftar){
-                header('location: index.php');
+                header('location: ../login.php');
                 $_SESSION['daftar'] = 'sukses';
               }
             }

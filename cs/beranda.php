@@ -15,27 +15,27 @@ if(isset ($_SESSION['username'])){
   $sql = mysqli_query($conn, $query);
 
   //Jumlah Administrator
-  $query_jml_adm = "select count(*) AS jumlah_adm from tb_user natural join tb_level where id_level = 1 and status = 'aktif'";
+  $query_jml_adm = "select count(*) AS jumlah_adm from tb_user natural join tb_level where id_level = 1";
   $sql_jml_adm = mysqli_query($conn, $query_jml_adm);
   $result_adm = mysqli_fetch_array($sql_jml_adm);
 
   //Jumlah Waiter
-  $query_jml_wtr = "select count(*) AS jumlah_wtr from tb_user natural join tb_level where id_level = 2 and status = 'aktif'";
+  $query_jml_wtr = "select count(*) AS jumlah_wtr from tb_user natural join tb_level where id_level = 2";
   $sql_jml_wtr = mysqli_query($conn, $query_jml_wtr);
   $result_wtr = mysqli_fetch_array($sql_jml_wtr);
 
   //Jumlah Kasir
-  $query_jml_ksr = "select count(*) AS jumlah_ksr from tb_user natural join tb_level where id_level = 3 and status = 'aktif'";
+  $query_jml_ksr = "select count(*) AS jumlah_ksr from tb_user natural join tb_level where id_level = 3";
   $sql_jml_ksr = mysqli_query($conn, $query_jml_ksr);
   $result_ksr = mysqli_fetch_array($sql_jml_ksr);
 
   //Jumlah Owner
-  $query_jml_own = "select count(*) AS jumlah_own from tb_user natural join tb_level where id_level = 4 and status = 'aktif'";
+  $query_jml_own = "select count(*) AS jumlah_own from tb_user natural join tb_level where id_level = 4";
   $sql_jml_own = mysqli_query($conn, $query_jml_own);
   $result_own = mysqli_fetch_array($sql_jml_own);
 
   //Jumlah Pelanggan
-  $query_jml_plg = "select count(*) AS jumlah_plg from tb_user natural join tb_level where id_level = 5 and status = 'aktif'";
+  $query_jml_plg = "select count(*) AS jumlah_plg from tb_user natural join tb_level where id_level = 5";
   $sql_jml_plg = mysqli_query($conn, $query_jml_plg);
   $result_plg = mysqli_fetch_array($sql_jml_plg);
 
@@ -182,8 +182,6 @@ if(isset ($_SESSION['username'])){
                         <th style="width:5%">No.</th>
                         <th style="width:25%">Nama</th>
                         <th style="width:30%">Username</th>
-                        <th style="width:20%">Status</th>
-                        <th style="width:20%">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -194,29 +192,6 @@ if(isset ($_SESSION['username'])){
                           <td><center><?php echo $no++; ?>.</center></td>
                           <td><?php echo $r_dt_wtr['nama_user']; ?></td>
                           <td><?php echo $r_dt_wtr['username']; ?></td>
-                          <td><?php echo $r_dt_wtr['status']; ?></td>
-                          <td>
-                            <form action="" method="post">
-                            <?php 
-                              if($r_dt_wtr['status'] == 'aktif'){
-                            ?>
-                                <button name="unvalidasi" value="<?php echo $r_dt_wtr['id_user']; ?>" class="btn btn-warning btn-mini">
-                                  <i class='icon icon-remove'></i>
-                                </button>
-                            <?php 
-                              }
-                            ?>
-
-                            <?php 
-                              if($r_dt_wtr['status'] == 'nonaktif'){
-                            ?>
-                                <button name="validasi" value="<?php echo $r_dt_wtr['id_user']; ?>" class="btn btn-info btn-mini"><i class='icon icon-ok'></i></button>
-                                <button name="hapus_user" value="<?php echo $r_dt_wtr['id_user']; ?>" class="btn btn-danger btn-mini"><i class='icon icon-trash'></i></button>
-                            <?php 
-                              }
-                            ?>
-                            </form>
-                          </td>
                         </tr>
                       <?php
                         }
@@ -243,8 +218,6 @@ if(isset ($_SESSION['username'])){
                         <th style="width:5%">No.</th>
                         <th style="width:25%">Nama</th>
                         <th style="width:30%">Username</th>
-                        <th style="width:20%">Status</th>
-                        <th style="width:20%">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -255,29 +228,6 @@ if(isset ($_SESSION['username'])){
                           <td><center><?php echo $no_ksr++; ?>.</center></td>
                           <td><?php echo $r_dt_ksr['nama_user']; ?></td>
                           <td><?php echo $r_dt_ksr['username']; ?></td>
-                          <td><?php echo $r_dt_ksr['status']; ?></td>
-                          <td>
-                            <form action="" method="post">
-                            <?php 
-                              if($r_dt_ksr['status'] == 'aktif'){
-                            ?>
-                                <button name="unvalidasi" value="<?php echo $r_dt_ksr['id_user']; ?>" class="btn btn-warning btn-mini">
-                                  <i class='icon icon-remove'></i>
-                                </button>
-                            <?php 
-                              }
-                            ?>
-
-                            <?php 
-                              if($r_dt_ksr['status'] == 'nonaktif'){
-                            ?>
-                                <button name="validasi" value="<?php echo $r_dt_ksr['id_user']; ?>" class="btn btn-info btn-mini"><i class='icon icon-ok'></i></button>
-                                <button name="hapus_user" value="<?php echo $r_dt_ksr['id_user']; ?>" class="btn btn-danger btn-mini"><i class='icon icon-trash'></i></button>
-                            <?php 
-                              }
-                            ?>
-                            </form>
-                          </td>
                         </tr>
                       <?php
                         }
@@ -305,8 +255,6 @@ if(isset ($_SESSION['username'])){
                         <th style="width:5%">No.</th>
                         <th style="width:25%">Nama</th>
                         <th style="width:30%">Username</th>
-                        <th style="width:20%">Status</th>
-                        <th style="width:20%">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -317,29 +265,6 @@ if(isset ($_SESSION['username'])){
                           <td><center><?php echo $no_own++; ?>.</center></td>
                           <td><?php echo $r_dt_own['nama_user']; ?></td>
                           <td><?php echo $r_dt_own['username']; ?></td>
-                          <td><?php echo $r_dt_own['status']; ?></td>
-                          <td>
-                            <form action="" method="post">
-                            <?php 
-                              if($r_dt_own['status'] == 'aktif'){
-                            ?>
-                                <button name="unvalidasi" value="<?php echo $r_dt_own['id_user']; ?>" class="btn btn-warning btn-mini">
-                                  <i class='icon icon-remove'></i>
-                                </button>
-                            <?php 
-                              }
-                            ?>
-
-                            <?php 
-                              if($r_dt_own['status'] == 'nonaktif'){
-                            ?>
-                                <button name="validasi" value="<?php echo $r_dt_own['id_user']; ?>" class="btn btn-info btn-mini"><i class='icon icon-ok'></i></button>
-                                <button name="hapus_user" value="<?php echo $r_dt_own['id_user']; ?>" class="btn btn-danger btn-mini"><i class='icon icon-trash'></i></button>
-                            <?php 
-                              }
-                            ?>
-                            </form>
-                          </td>
                         </tr>
                       <?php
                         }
@@ -367,8 +292,6 @@ if(isset ($_SESSION['username'])){
                         <th style="width:5%">No.</th>
                         <th style="width:25%">Nama</th>
                         <th style="width:30%">Username</th>
-                        <th style="width:20%">Status</th>
-                        <th style="width:20%">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -379,29 +302,6 @@ if(isset ($_SESSION['username'])){
                           <td><center><?php echo $no_plg++; ?>.</center></td>
                           <td><?php echo $r_dt_plg['nama_user']; ?></td>
                           <td><?php echo $r_dt_plg['username']; ?></td>
-                          <td><?php echo $r_dt_plg['status']; ?></td>
-                          <td>
-                            <form action="" method="post">
-                            <?php 
-                              if($r_dt_plg['status'] == 'aktif'){
-                            ?>
-                                <button name="unvalidasi" value="<?php echo $r_dt_plg['id_user']; ?>" class="btn btn-warning btn-mini">
-                                  <i class='icon icon-remove'></i>
-                                </button>
-                            <?php 
-                              }
-                            ?>
-
-                            <?php 
-                              if($r_dt_plg['status'] == 'nonaktif'){
-                            ?>
-                                <button name="validasi" value="<?php echo $r_dt_plg['id_user']; ?>" class="btn btn-info btn-mini"><i class='icon icon-ok'></i></button>
-                                <button name="hapus_user" value="<?php echo $r_dt_plg['id_user']; ?>" class="btn btn-danger btn-mini"><i class='icon icon-trash'></i></button>
-                            <?php 
-                              }
-                            ?>
-                            </form>
-                          </td>
                         </tr>
                       <?php
                         }
@@ -420,29 +320,7 @@ if(isset ($_SESSION['username'])){
                       //$_SESSION['daftar'] = 'sukses';
                     }
                   }
-
-                  if(isset($_POST['validasi'])){
-                    $id_user = $_POST['validasi'];
-                    //echo $id_user;
-                    $query_validasi = "update tb_user set status = 'aktif' where id_user = $id_user";
-                    $sql_validasi = mysqli_query($conn, $query_validasi);
-                    if($sql_validasi){
-                      header('location: beranda.php');
-                      //$_SESSION['daftar'] = 'sukses';
-                    }
-                  }
-
-                  if(isset($_POST['unvalidasi'])){
-                    $id_user = $_POST['unvalidasi'];
-                    //echo $id_user;
-                    $query_unvalidasi = "update tb_user set status = 'nonaktif' where id_user = $id_user";
-                    $sql_unvalidasi = mysqli_query($conn, $query_unvalidasi);
-                    if($sql_unvalidasi){
-                      header('location: beranda.php');
-                      //$_SESSION['daftar'] = 'sukses';
-                    }
-                  }
-                ?>
+                  ?>
               </div>
             </div>
           </div>

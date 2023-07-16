@@ -36,24 +36,6 @@
 		<div class="container-login100" style="background-image: url('');">
 			<div class="wrap-login100 p-t-120 p-b-30">
 				<form action="" method="post" class="login100-form validate-form">
-					<?php 
-						if(isset($_SESSION['eror'])){
-					?>
-						<div class='container'>	
-							<div class = 'alert alert-danger'>
-								<span>
-									<center>Silahkan kalian klik login lagi</center>
-								</span>
-							</div> 
-						</div>
-					<?php 
-						unset($_SESSION['eror']);
-						}
-					?>
-					<div class="login100-form-avatar">
-						<img src="" alt="">
-					</div>
-
 					<span class="login100-form-title p-t-20 p-b-45">
 						EYDITH CAFE
 					</span>
@@ -75,7 +57,7 @@
 
 					<div class="container-login100-form-btn p-t-10">
 						<button type="submit" name="login" class="login100-form-btn">
-							Login
+							Konfirmasi
 						</button>
 					</div>
 					<?php 
@@ -90,13 +72,6 @@
 					<?php
 						} else {
 					?>
-					<br><br><br><br><br>
-					<div class="text-center w-full">
-						<a class="txt1" href="daftar.php">
-							Buat akun baru disini
-							<i class="fa fa-long-arrow-right"></i>						
-						</a>
-					</div>
 					<?php
 						}
 					?>
@@ -122,7 +97,7 @@
 			$akun = mysqli_query($conn, "select * from tb_user natural join tb_level");
 			echo mysqli_error($conn);
 			while($r = mysqli_fetch_array($akun)){
-				if($r['username'] == $username and $r['password'] == $password and $r['status'] == 'aktif'){
+				if($r['username'] == $username and $r['password'] == $password){
 					$_SESSION['username'] = $username;
 					$_SESSION['id_user'] = $r['id_user'];
 					$_SESSION['level'] = $r['id_level'];
